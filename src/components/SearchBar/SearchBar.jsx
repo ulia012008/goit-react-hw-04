@@ -4,12 +4,13 @@ import toast, { Toaster } from "react-hot-toast";
 
 export default function SearchBar({ onSubmit }) {
   const handleSubmit = (values, action) => {
-    onSubmit(values.query);
-    action.resetForm();
     const query = values.query.trim();
     if (query === "") {
-      return toast("Please, write a name");
+      toast.error("Please, write a name");
+      return;
     }
+    onSubmit(values.query);
+    action.resetForm();
   };
   return (
     <header className={css.header}>

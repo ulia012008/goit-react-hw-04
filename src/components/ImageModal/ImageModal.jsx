@@ -1,8 +1,10 @@
+import React from "react";
 import Modal from "react-modal";
 import css from "./ImageModal.module.css";
 
-export const ImageModal = ({ isOpen, onRequestClose, image }) => {
+const ImageModal = ({ isOpen, onRequestClose, image }) => {
   if (!image) return null;
+
   return (
     <Modal
       isOpen={isOpen}
@@ -11,8 +13,18 @@ export const ImageModal = ({ isOpen, onRequestClose, image }) => {
       overlayClassName={css.overlay}
       contentLabel="Image modal"
     >
-      <img src={image.urls.regular} alt={image.alt_description} />
-      <button onClick={onRequestClose}>Close</button>
+      <button
+        onClick={onRequestClose}
+        className={css.closeButton}
+        aria-label="Close modal"
+      >
+        ✕
+      </button>
+      <img
+        className={css.img}
+        src={image.urls.regular}
+        alt={image.alt_description || "Enlarged image"}
+      />
     </Modal>
   );
 };

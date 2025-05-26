@@ -54,6 +54,7 @@ function App() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+
     setSelectedImage(null);
   };
 
